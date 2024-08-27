@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Hina_Mincho } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const hina = Hina_Mincho({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +17,47 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html className="min-h-full flex flex-col" lang="en">
+      <body className={[hina.className, "grow flex flex-col"].join(" ")}>
+        <Header />
+        <svg
+          id="svg1"
+          viewBox="0 0 527 345"
+          className="fill-[#d9d9d961] absolute top-0 left-0 w-[38vw] z-[-1]"
+        >
+          <path d="M0,0 L0,345 L527,0" />
+        </svg>
+        <svg
+          id="svg2"
+          viewBox="0 0 286 828"
+          className="fill-[#d9d9d961] absolute left-0 h-[100dvh] z-[-1]"
+        >
+          <path d="M0,0 L0,828 L76,828 L286,0" />
+        </svg>
+        <svg
+          id="svg3"
+          viewBox="0 0 1280 180"
+          className="fill-[#d9d9d961] absolute bottom-0 w-[100vw] z-[-1]"
+        >
+          <path d="M0,0 L0,180 L1280,180 L1280,90" />
+        </svg>
+        <svg
+          id="svg4"
+          viewBox="0 0 212 828"
+          className="fill-[#d9d9d961] absolute right-0 h-[100dvh] z-[-1]"
+        >
+          <path d="M140,0 L212,0 L212,828 L0,828 " />
+        </svg>
+        <svg
+          id="svg5"
+          viewBox="0 0 351 544"
+          className="fill-[#d9d9d961] absolute top-0 right-0 h-[65dvh] z-[-1]"
+        >
+          <path d="M0,0 L351,0 L351,544" />
+        </svg>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
