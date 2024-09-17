@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./loading.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PASS } from "@/var/pass";
@@ -9,6 +9,7 @@ export default function Loading() {
   const router = useRouter();
   const searchParam = useSearchParams();
   const pass = searchParam.get("pass");
+  const audioRef = useRef<HTMLAudioElement>(null);
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (pass === PASS) {
@@ -20,9 +21,17 @@ export default function Loading() {
     return () => {
       clearTimeout(timeout);
     };
-  });
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, [audioRef]);
+
   return (
     <main className="flex flex-col items-center justify-center gap-10">
+      <audio ref={audioRef} src="/loading.mp3"></audio>
       <p className="text-[40px]">認証中</p>
       <div
         className={["w-[60vw] h-[40px] bg-[#D9D9D9] rounded-[5px] p-1"].join(
