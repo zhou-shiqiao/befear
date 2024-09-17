@@ -1,1 +1,1 @@
-export const PASS = "1234";
+export const PASS = ["9664", "2618", "2024"];

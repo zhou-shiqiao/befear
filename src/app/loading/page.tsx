@@ -12,7 +12,11 @@ export default function Loading() {
   const audioRef = useRef<HTMLAudioElement>(null);
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (pass === PASS) {
+      if (!pass) {
+        router.push("/failed");
+        return;
+      }
+      if (PASS.includes(pass)) {
         router.push("/success");
       } else {
         router.push("/failed");
