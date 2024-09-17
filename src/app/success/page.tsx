@@ -1,8 +1,19 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 export default function Success() {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      router.push("/");
+    }, 15000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  });
 
   useEffect(() => {
     if (audioRef.current) {
