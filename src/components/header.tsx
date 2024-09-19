@@ -1,5 +1,7 @@
 import { Mulish } from "next/font/google";
 import Link from "next/link";
+import logo from "@/befear-logo.png";
+import Image from "next/image";
 
 const mulish = Mulish({ weight: "600", subsets: ["latin"] });
 
@@ -12,7 +14,9 @@ export const Header: React.FC = () => {
           mulish.className,
         ].join(" ")}
       >
-        <Link href={"/"}>BeFear.</Link>
+        <Link href={"/"} className="relative">
+          <Image alt="" src={logo} width={200} />
+        </Link>
       </div>
       <div className="h-[12px] bg-black"></div>
     </header>
