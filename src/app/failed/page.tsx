@@ -1,5 +1,6 @@
 "use client";
 
+import { AUTO_TOP } from "@/var/pass";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 
@@ -10,7 +11,7 @@ export default function Success() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       router.push("/");
-    }, 15000);
+    }, AUTO_TOP);
     return () => {
       clearTimeout(timeout);
     };
