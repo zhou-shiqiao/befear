@@ -22,19 +22,19 @@ export default function Home() {
             onKeyDown={(e) => {
               e.preventDefault();
               e.currentTarget.value = isNaN(parseInt(e.key)) ? "" : e.key;
-              console.log(e.code);
-              if (e.code === "Backspace" && idx !== 0) {
+              console.log(e.key);
+              if (e.key === "Backspace" && idx !== 0) {
                 const prev = document.getElementById(
                   (idx - 1).toString()
                 ) as HTMLInputElement;
                 // prev.value = "";
                 prev.focus();
-              } else if (e.code === "Backspace" && idx === 0) {
+              } else if (e.key === "Backspace" && idx === 0) {
                 return;
               } else if (
                 ![0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-                  .map((n) => "Digit" + n.toString())
-                  .includes(e.code)
+                  .map((n) => n.toString())
+                  .includes(e.key)
               ) {
                 return false;
               } else if (idx === 3) {
