@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import styles from "./loading.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PASS } from "@/var/pass";
 
-export default function Loading() {
+const Control = () => {
   const router = useRouter();
   const searchParam = useSearchParams();
   const pass = searchParam.get("pass");
-  const audioRef = useRef<HTMLAudioElement>(null);
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (!pass) {
@@ -26,6 +25,11 @@ export default function Loading() {
       clearTimeout(timeout);
     };
   }, []);
+  return <></>;
+};
+
+export default function Loading() {
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -49,6 +53,9 @@ export default function Loading() {
             styles.bar,
           ].join(" ")}
         ></div>
+        <Suspense>
+          <Control />
+        </Suspense>
       </div>
     </main>
   );
