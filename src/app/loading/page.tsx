@@ -39,7 +39,7 @@ export default function Loading() {
 
   return (
     <main className="flex flex-col items-center justify-center gap-10">
-      <audio ref={audioRef} src="/loading.mp3"></audio>
+      <audio ref={audioRef} src="loading.mp3"></audio>
       <p className="text-[40px]">認証中</p>
       <div
         className={["w-[60vw] h-[40px] bg-[#D9D9D9] rounded-[5px] p-1"].join(
